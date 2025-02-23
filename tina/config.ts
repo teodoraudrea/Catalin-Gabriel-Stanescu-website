@@ -46,6 +46,25 @@ export default defineConfig({
             label: "Body",
             isBody: true,
           },
+          {
+            type: "rich-text",
+            name: "description",
+            label: "Description",
+            required: true,
+          },
+          {
+            type: "datetime",
+            name: "pubDate",
+            label: "Date published",
+            required: true,
+          },
+          {
+
+            type: "image",
+            name: "heroImage",
+            label: "Hero Image",
+            required: true,
+          },
         ],
       },
     ],
