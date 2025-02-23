@@ -1,16 +1,10 @@
 ---
-description: >-
-  Here is a sample of some basic Markdown syntax that can be used when writing
-  Markdown content in Astro.
-pubDate: Jun 19 2024
-heroImage: /trump-america-is-back.webp
 title: >-
   Trump, Putin, and the Shifting World Order: A Game of Adaptation, Disruption,
   and Response
 ---
 
-
-# Trump and the Global Chessboard: Adaptation, Disruption, and Geopolitical Shifts
+## Trump and the Global Chessboard: Adaptation, Disruption, and Geopolitical Shifts
 
 In the grand chessboard of geopolitics, **Donald Trump** is often portrayed as a disruptor—a force of chaos unsettling the status quo. However, this characterization misreads both his role and the rapidly evolving global order.
 
