@@ -2,9 +2,10 @@
 title: >-
   Trump, Putin, and the Shifting World Order: A Game of Adaptation, Disruption,
   and Response
-description: Demo blog
-pubDate: 'Jul 22 2022'
-heroImage: '/trump-america-is-back.jpg'
+description: |
+  Demo blog
+pubDate: 2025-02-22T00:00:00.000Z
+heroImage: /trump-america-is-back.webp
 ---
 
 ## Trump and the Global Chessboard: Adaptation, Disruption, and Geopolitical Shifts
