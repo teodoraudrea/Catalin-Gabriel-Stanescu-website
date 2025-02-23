@@ -4,7 +4,7 @@ title: >-
   and Response
 description: |
   Demo blog
-pubDate: 2025-02-22T00:00:00.000Z
+pubDate: 2025-01-21T00:00:00.000Z
 heroImage: /trump-america-is-back.webp
 ---
 
