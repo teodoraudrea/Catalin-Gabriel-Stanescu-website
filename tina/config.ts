@@ -32,6 +32,12 @@ export default defineConfig({
         name: "blog",
         label: "Blog Posts",
         path: "src/content/blog",
+        defaultItem: {
+          title: "Title",
+          description: "Bla bla bla",
+          pubDate: "Sep 09 2025",
+          heroImage: "/blog-placeholder-3.jpg"
+        },
         fields: [
           {
             type: "string",
@@ -59,7 +65,6 @@ export default defineConfig({
             required: true,
           },
           {
-
             type: "image",
             name: "heroImage",
             label: "Hero Image",
