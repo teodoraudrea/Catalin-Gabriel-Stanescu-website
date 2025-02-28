@@ -1,38 +1,46 @@
-# Astro Starter Kit: Blog
+# Ovidius - Astro & Tailwind CSS Theme by justgoodui.com
 
-```sh
-npm create astro@latest -- --template blog
-```
+Ovidius is a single-author blog theme for Astro.js. Featuring a minimal, slick, responsive and content-focused design. For more Astro.js themes please check [justgoodui.com](https://justgoodui.com/).
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+![Ovidius Astro.js Theme](public/ovidius-preview.jpg)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/JustGoodUI/ovidius-astro-theme)
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+If you click this☝️ button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
 
-Features:
+## Theme Features:
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
+- ✅ Featured post support
+- ✅ Subscribe form
+- ✅ Tailwind CSS
 - ✅ SEO-friendly with canonical URLs and OpenGraph data
 - ✅ Sitemap support
 - ✅ RSS Feed support
 - ✅ Markdown & MDX support
 
+## Template Integrations
+
+- @astrojs/tailwind - https://docs.astro.build/en/guides/integrations-guide/tailwind/
+- @astrojs/sitemap - https://docs.astro.build/en/guides/integrations-guide/sitemap/
+- @astrojs/mdx - https://docs.astro.build/en/guides/markdown-content/
+- @astrojs/rss - https://docs.astro.build/en/guides/rss/
+
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside of Ovidius Astro theme, you'll see the following folders and files:
 
 ```text
 ├── public/
 ├── src/
 │   ├── components/
 │   ├── content/
+│   ├── data/
+│   ├── icons/
 │   ├── layouts/
-│   └── pages/
+│   ├── pages/
+│   └── styles/
 ├── astro.config.mjs
+├── tailwind.config.cjs
 ├── README.md
 ├── package.json
 └── tsconfig.json
@@ -40,13 +48,13 @@ Inside of your Astro project, you'll see the following folders and files:
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+There's nothing special about `src/components/`, but that's where we like to put any Astro (`.astro`) components.
 
 The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
 
 Any static assets, like images, can be placed in the `public/` directory.
 
-## 🧞 Commands
+## Astro.js Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -59,10 +67,19 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## Want to learn more about Astro.js?
 
 Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 
-## Credit
+## Credits
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+- Demo content generate with [Chat GPT](https://chat.openai.com/)
+- Images for demo content from [Unsplash](https://unsplash.com/)
+
+## Astro Themes by Just Good UI
+
+- [Dante](https://github.com/JustGoodUI/dante-astro-theme) is a free single-author blog and portfolio theme. 
+
+## License
+
+Licensed under the [GPL-3.0](https://github.com/JustGoodUI/ovidius-astro-theme/blob/main/LICENSE) license.

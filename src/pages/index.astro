@@ -1,78 +1,60 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
+import { getCollection } from 'astro:content';
+import NoHeaderLayout from '../layouts/NoHeaderLayout.astro';
 import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Hero from '../components/Hero.astro';
+import FeaturedPostPreview from '../components/FeaturedPostPreview.astro';
+import PostPreview from '../components/PostPreview.astro';
+import siteConfig from '../data/site-config';
+import { sortPostsByDateDesc } from '../utils/post-utils';
+import Subscribe from '../components/Subscribe.astro';
+
+const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
+const featuredPosts = posts.filter(({ data }) => data.isFeatured);
+const latestPosts = posts.filter(({ data }) => !data.isFeatured).slice(0, 3);
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1 style="display: flex; align-items: flex-end; justify-content: space-between;">
-				What I do
-				<img src="/portrait-no-bg-flipped.png" alt="Icon" style="height: 200px;">
-			</h1>
-			<p>
-				As an Associate Professor at Syddansk Universitet since 2021, I teach and conduct research in the field of <strong>international business law</strong>, with a focus on <strong>commercial and contract law</strong>. I also have over six years of experience as a visiting lecturer at other prestigious universities in Europe, where I have developed and delivered courses on:
-			  </p>
-			  <ul>
-				<li>Digital and Energy Law</li>
-				<li>Atypical Contracts</li>
-				<li>Investment Law</li>
-			  </ul>
-
-			  <h2>Mission</h2>
-			  <p>
-				My mission is to contribute to the advancement of legal knowledge and practice, as well as to foster the development of critical thinking and ethical awareness among my students and peers.
-			  </p>
-
-			  <h2>Publications</h2>
-			  <p>
-				I have published multiple monographs, chapters, and peer-reviewed articles in reputable journals and conference proceedings, covering topics such as:
-			  </p>
-			  <ul>
-				<li>Debt Recovery</li>
-				<li>Consumer Protection</li>
-				<li>Energy Contracts</li>
-			  </ul>
-
-			  <h2>Visiting Research Positions</h2>
-			  <p>
-				I have held visiting research positions at some of the most vibrant and reputable research institutions in the world:
-			  </p>
-			  <ul>
-				<li>
-				  <strong>Institute for Advanced Legal Studies</strong> (London, 2013 – 3 months)
-				</li>
-				<li>
-				  <strong>Centre for Energy, Petroleum and Mineral Law and Policy</strong> (Dundee, 2019 – 3 months)
-				</li>
-				<li>
-				  <strong>European University Institute</strong> (Florence, 2023 – 5 months)
-				</li>
-				<li>
-				  <strong>Centre for Banking and Finance Law</strong> (Singapore, 2024 – 3 months)
-				</li>
-				<li>
-				  <strong>Max Planck Institute for Comparative and Private International Law</strong> (2024 – 3 months)
-				</li>
-			  </ul>
-
-			  <h2>Practical Experience</h2>
-			  <p>
-				I also have significant practical experience, having worked in various legal roles, including:
-			  </p>
-			  <ul>
-				<li>Legal Counsel for a City Hall</li>
-				<li>In-house Lawyer for Two Major Energy Conglomerates</li>
-				<li>Managing Associate in a Boutique Law Firm</li>
-			  </ul>
-		</main>
-		<Footer />
-	</body>
-</html>
+<NoHeaderLayout description={siteConfig.description} image={siteConfig.image}>
+    <div class="relative bg-slate-50 border-b border-slate-100">
+        <Header class="relative" />
+        <Hero />
+    </div>
+    <main class="grow py-12 sm:py-16">
+        {
+            featuredPosts?.length > 0 && (
+                <div class="px-4 mb-12 border-b border-slate-200 sm:px-8 sm:mb-16">
+                    <div class="max-w-6xl mx-auto">
+                        {featuredPosts.map((post) => (
+                            <FeaturedPostPreview post={post} />
+                        ))}
+                    </div>
+                </div>
+            )
+        }
+        {
+            latestPosts?.length > 0 && (
+                <div class="px-4 mb-12 sm:px-8 sm:mb-16">
+                    <div class="max-w-3xl mx-auto mb-8 sm:mb-12">
+                        <h2 class="text-sm uppercase tracking-wider text-slate-900 after:content-[''] after:block after:w-16 after:h-px after:bg-primary after:mt-4">
+                            Latest Articles
+                        </h2>
+                    </div>
+                    <div class="max-w-3xl mx-auto xl:max-w-6xl">
+                        {latestPosts.map((post) => (
+                            <PostPreview post={post} />
+                        ))}
+                    </div>
+                    <div class="max-w-3xl mx-auto pt-8 border-t border-slate-200 sm:pt-12">
+                        <a
+                            class="px-8 py-2.5 inline-flex gap-1.5 justify-center items-center font-semibold bg-primary text-white rounded-full transition duration-300 hover:shadow-button"
+                            href="/blog"
+                        >
+                            View All Posts
+                        </a>
+                    </div>
+                </div>
+            )
+        }
+        <Subscribe class="px-4 my-12 sm:px-8 sm:my-16" />
+    </main>
+</NoHeaderLayout>
