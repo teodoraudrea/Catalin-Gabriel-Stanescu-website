@@ -1,22 +1,28 @@
 {
-  "name": "",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "npx tinacms dev -c \"astro dev\"",
-    "build": "tinacms build && astro build",
-    "preview": "tinacms build && astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/mdx": "^4.0.8",
-    "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.2.1",
-    "astro": "^5.3.0",
-    "tinacms": "^2.7.0"
-  },
-  "devDependencies": {
-    "@tinacms/cli": "^1.9.0",
-    "@types/node": "^22.13.5"
-  }
+    "name": "catalin-gabriel-stanescu-website",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "npx tinacms dev -c \"astro dev\"",
+        "build": "tinacms build && astro build",
+        "preview": "tinacms build && astro preview",
+        "astro": "astro"
+      },
+    "dependencies": {
+        "@astrojs/mdx": "^4.0.3",
+        "@astrojs/rss": "^4.0.10",
+        "@astrojs/sitemap": "^3.2.1",
+        "@astrojs/tailwind": "^5.1.4",
+        "@fontsource-variable/figtree": "^5.1.1",
+        "astro": "^5.1.1",
+        "tailwindcss": "^3.4.17",
+        "tinacms": "^2.7.2"
+    },
+    "devDependencies": {
+        "@tailwindcss/typography": "^0.5.15",
+        "@tinacms/cli": "^1.9.2",
+        "@types/node": "^22.13.6",
+        "prettier": "^3.4.2",
+        "prettier-plugin-tailwindcss": "^0.6.9"
+    }
 }
