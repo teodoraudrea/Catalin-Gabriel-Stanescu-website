@@ -1,13 +1,17 @@
 ---
 title: 'The Evolution of Front-End Development: A Journey Through Time'
-excerpt: Choosing the right framework for your web project is a critical decision that can significantly impact the development process and the success of your project. With so many options available, it's essential to consider various factors before making a choice.
-publishDate: 'Jan 12 2024'
+excerpt: >-
+  Choosing the right framework for your web project is a critical decision that
+  can significantly impact the development process and the success of your
+  project. With so many options available, it's essential to consider various
+  factors before making a choice.
+publishDate: 2024-01-12T00:00:00.000Z
 featureImage:
-  src: '/post-9.webp'
+  src: /post-9.webp
   alt: Blue shapes
 seo:
   image:
-    src: '/post-9.jpg'
+    src: /post-9.jpg
 ---
 
 Front-end development has come a long way since the early days of the World Wide Web. From static HTML pages to dynamic and interactive web applications, the evolution of front-end development has been nothing short of remarkable. In this post, we'll take a fascinating journey through time to explore how front-end development has evolved over the years.
