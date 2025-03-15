@@ -9,7 +9,7 @@ export type Link = {
 };
 
 export type SocialLink = Link & {
-    icon: 'codepen' | 'dev' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'medium' | 'x-twitter';
+    icon: 'codepen' | 'dev' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'medium' | 'x-twitter' | 'substack';
 };
 
 export type Hero = {
@@ -41,9 +41,9 @@ export type SiteConfig = {
 const siteConfig: SiteConfig = {
     logo: {
         src: '/logo.svg',
-        alt: 'Ovidius logo'
+        alt: 'Cătălin-Gabriel Stănescu'
     },
-    title: 'Ovidius',
+    title: 'Cătălin-Gabriel Stănescu',
     description: 'Astro.js and Tailwind CSS theme for blogging by justgoodui.com',
     image: {
         src: '/ovidius-preview.jpg',
@@ -65,10 +65,6 @@ const siteConfig: SiteConfig = {
         {
             text: 'Contact',
             href: '/contact'
-        },
-        {
-            text: 'Download Theme',
-            href: 'https://github.com/JustGoodUI/ovidius-astro-theme'
         }
     ],
     secondaryNavLinks: [
@@ -83,27 +79,18 @@ const siteConfig: SiteConfig = {
         {
             text: 'Contact',
             href: '/contact'
-        },
-        {
-            text: 'Download Theme',
-            href: 'https://github.com/JustGoodUI/ovidius-astro-theme'
         }
     ],
     socialLinks: [
         {
-            text: 'Go to GitHub repo',
-            href: 'https://github.com/JustGoodUI/ovidius-astro-theme',
-            icon: 'github'
+            text: 'Let\'s connect on Linkedin',
+            href: 'https://www.linkedin.com/in/c%C4%83t%C4%83lin-gabriel-stanescu/',
+            icon: 'linkedin'
         },
         {
-            text: 'Follow on Instagram',
-            href: 'https://instagram.com/',
-            icon: 'instagram'
-        },
-        {
-            text: 'Follow on X',
-            href: 'https://twitter.com/justgoodui',
-            icon: 'x-twitter'
+            text: 'Follow me on Substack',
+            href: 'https://substack.com/@catalinstanescu',
+            icon: 'substack'
         }
     ],
     hero: {
