@@ -7,13 +7,14 @@
         "build": "tinacms build && astro build",
         "preview": "tinacms build && astro preview",
         "astro": "astro"
-      },
+    },
     "dependencies": {
         "@astrojs/mdx": "^4.0.3",
         "@astrojs/rss": "^4.0.10",
         "@astrojs/sitemap": "^3.2.1",
         "@astrojs/tailwind": "^5.1.4",
         "@fontsource-variable/figtree": "^5.1.1",
+        "@vercel/analytics": "^1.5.0",
         "astro": "^5.1.1",
         "tailwindcss": "^3.4.17",
         "tinacms": "^2.7.2"

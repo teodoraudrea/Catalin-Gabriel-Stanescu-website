@@ -2,6 +2,7 @@
 import figtreeWoff2 from '@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2?url';
 import siteConfig from '../data/site-config';
 import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro'
 
 export type Props = {
     title?: string;
@@ -68,3 +69,5 @@ function formatCanonicalURL(url: string | URL) {
 <meta property="twitter:description" content={description} />
 {resolvedImage?.src && <meta property="twitter:image" content={resolvedImage.src} />}
 {resolvedImage?.alt && <meta name="twitter:image:alt" content={resolvedImage?.alt} />}
+
+<Analytics/>
