@@ -11,7 +11,7 @@ const { class: className } = Astro.props;
     {
         siteConfig.logo && siteConfig.logo?.src ? (
             <a href="/">
-                <img class="max-h-16" src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} />
+                <img class="max-h-12" src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} />
             </a>
         ) : (
             <a class="text-xl font-bold sm:text-2xl" href="/">
