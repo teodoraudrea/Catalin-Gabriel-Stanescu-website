@@ -6,11 +6,8 @@ type Props = HTMLAttributes<'svg'>;
 const { class: className, ...props } = Astro.props;
 ---
 
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="200" viewBox="0 0 500 200" class={className} {...props}>
-    <rect width="100%" height="100%" fill="white"/>
-    <foreignObject x="0" y="0" width="100%" height="100%">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; font-size: 48px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">
-            Cătălin-Gabriel Stănescu
-        </div>
-    </foreignObject>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" class={className} {...props}>
+    <path d="M20,50 L580,50 L580,150 L20,150 Z" fill="white"/>
+    <path d="M100,120 C120,60 200,60 220,120 C240,180 320,180 340,120 C360,60 440,60 460,120" 
+          fill="none" stroke="black" stroke-width="10"/>
 </svg>
