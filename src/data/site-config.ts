@@ -9,7 +9,7 @@ export type Link = {
 };
 
 export type SocialLink = Link & {
-    icon: 'codepen' | 'dev' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'medium' | 'x-twitter' | 'substack';
+    icon: 'codepen' | 'dev' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'medium' | 'x-twitter' | 'substack' | 'googleScholar';
 };
 
 export type Hero = {
@@ -73,10 +73,6 @@ const siteConfig: SiteConfig = {
             href: '/about'
         },
         {
-            text: 'Terms of Service',
-            href: '/terms'
-        },
-        {
             text: 'Contact',
             href: '/contact'
         }
@@ -91,6 +87,11 @@ const siteConfig: SiteConfig = {
             text: 'Follow me on Substack',
             href: 'https://substack.com/@catalinstanescu',
             icon: 'substack'
+        },
+        {
+            text: 'Google Scholar',
+            href: 'https://scholar.google.com/citations?user=Rhrc_iMAAAAJ&hl=en',
+            icon: 'googleScholar'
         }
     ],
     hero: {
