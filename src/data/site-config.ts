@@ -94,8 +94,8 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        title: 'Hi there!',
-        text: "My name is Justin Case. I'm a freelance front-end developer, author and speaker based in Austin, TX. It's nice to meet you.",
+        title: 'Prof Dr Cătălin-Gabriel Stănescu',
+        text: "Academic | Lawyer | Debt Collection Regulation Specialist unveiling the shadow realms of debt",
         avatar: {
             src: '/avatar.jpg',
             alt: 'Cătălin-Gabriel Stănescu'
