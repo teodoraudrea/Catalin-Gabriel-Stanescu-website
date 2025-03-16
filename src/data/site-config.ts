@@ -98,7 +98,7 @@ const siteConfig: SiteConfig = {
         text: "My name is Justin Case. I'm a freelance front-end developer, author and speaker based in Austin, TX. It's nice to meet you.",
         avatar: {
             src: '/avatar.jpg',
-            alt: 'Justin Case'
+            alt: 'Cătălin-Gabriel Stănescu'
         },
         backgroundImage: {
             src: '/hero.webp'
