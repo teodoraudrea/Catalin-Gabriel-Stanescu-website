@@ -8,5 +8,20 @@
 @layer base {
     :root {
         --color-primary: 34 33 65; /* #222141 */
+        --color-bg: 255 255 255; /* Light mode background */
+        --color-text: 0 0 0; /* Light mode text */
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --color-primary: 255 165 0; /* Example: Orange primary color for dark mode */
+            --color-bg: 20 20 30; /* Dark background */
+            --color-text: 255 255 255; /* White text */
+        }
+    }
+
+    body {
+        background-color: rgb(var(--color-bg));
+        color: rgb(var(--color-text));
     }
 }

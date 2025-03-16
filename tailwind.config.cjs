@@ -2,6 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
+    darkMode: 'media',
     theme: {
         fontFamily: {
             sans: ['Figtree Variable', 'Georgia', ...defaultTheme.fontFamily.sans]
