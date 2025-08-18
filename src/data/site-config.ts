@@ -6,6 +6,7 @@ export type Image = {
 export type Link = {
     href: string;
     text: string;
+    subLinks?: Link[];
 };
 
 export type SocialLink = Link & {
@@ -55,17 +56,69 @@ const siteConfig: SiteConfig = {
             href: '/'
         },
         {
-            text: 'Blog',
-            href: '/blog'
-        },
-        {
             text: 'About',
             href: '/about'
         },
         {
+            text: 'Research',
+            href: '/research'
+        },
+        {
+            text: 'Publications',
+            href: '/publications'
+        },
+        {
+            text: 'Teaching',
+            href: '/teaching'
+        },
+        {
+            text: 'Engagement',
+            href: '/engagement',
+            subLinks: [
+                {
+                    text: 'Conferences and talks',
+                    href: '/engagement/conferences-and-talks'
+                },
+                {
+                    text: 'Media and press',
+                    href: '/engagement/media-and-press'
+                }
+            ]
+        },
+        {
+            text: 'Consultancy',
+            href: '/consultancy',
+            subLinks: [
+                {
+                    text: 'Services',
+                    href: '/consultancy/services'
+                },
+                {
+                    text: 'Training',
+                    href: '/consultancy/training'
+                },
+                {
+                    text: 'Speaking',
+                    href: '/consultancy/speaking'
+                },
+                {
+                    text: 'Collaborative research',
+                    href: '/consultancy/collaborative-research'
+                },
+                {
+                    text: 'Past highlights',
+                    href: '/consultancy/past-highlights'
+                }
+            ]
+        },
+        {
+            text: 'Blog and news',
+            href: '/blog'
+        },
+        {
             text: 'Contact',
             href: '/contact'
-        }
+        },
     ],
     secondaryNavLinks: [
         {
