@@ -1,0 +1,15 @@
+---
+import Tag from './Tag.astro';
+
+const { tagText, title, description } = Astro.props;
+---
+
+<div class="p-6 border rounded-lg shadow-sm bg-white">
+  {tagText && (
+    <div class="mb-2">
+      <Tag text={tagText} />
+    </div>
+  )}
+  <h2 class="text-lg font-semibold mb-1">{title}</h2>
+  <p class="text-slate-600 text-sm">{description}</p>
+</div>
