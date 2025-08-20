@@ -14,14 +14,14 @@ const socialLinks = siteConfig.socialLinks || [];
             {hero?.backgroundImage?.src && (
                 <div class="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: `url(${hero?.backgroundImage?.src})` }} />
             )}
-            <section class="px-4 py-4 relative sm:px-8 sm:py-16">
+            <section class="px-4 py-4 relative sm:px-8 sm:py-4">
                 <div class="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
                     {hero?.avatar?.src && (
                         <div class="p-2">
                             <img
                                 src={hero?.avatar?.src}
                                 alt={hero?.avatar?.alt || ''}
-                                class="w-56 aspect-square object-cover rounded-full border-2 border-primary shadow-avatar"
+                                class="w-48 aspect-square object-cover rounded-full border-2 border-primary shadow-avatar"
                             />
                         </div>
                     )}

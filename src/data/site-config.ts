@@ -9,6 +9,12 @@ export type Link = {
     subLinks?: Link[];
 };
 
+export type HighlightProps = {
+    tagText?: string;
+    title: string;
+    description: string;
+  };
+
 export type SocialLink = Link & {
     icon: 'codepen' | 'dev' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'medium' | 'x-twitter' | 'substack' | 'googleScholar';
 };
