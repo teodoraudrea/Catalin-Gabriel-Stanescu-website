@@ -54,10 +54,10 @@ const siteConfig: SiteConfig = {
         alt: 'Cătălin-Gabriel Stănescu'
     },
     title: 'Cătălin-Gabriel Stănescu',
-    description: 'Astro.js and Tailwind CSS theme for blogging by justgoodui.com',
+    description: 'The personal website of Prof. Dr. Cătălin-Gabriel Stănescu; legal scholar, professor, and author. Discover his research, publications, and professional work.',
     image: {
-        src: '/ovidius-preview.jpg',
-        alt: 'Ovidius - Astro.js and Tailwind CSS theme'
+        src: '/Catalin-Gabriel-Stanescu-main.JPEG',
+        alt: 'Catalin Gabriel Stanescu'
     },
     primaryNavLinks: [
         {
@@ -173,10 +173,10 @@ const siteConfig: SiteConfig = {
         }
     },
     subscribe: {
-        title: 'Subscribe to Ovidius Newsletter',
-        text: 'One update per week. All the latest news directly in your inbox.',
-        formUrl: 'https://justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117&amp;f_id=005c48e2f0'
-    },
+        title: 'Subscribe for Research Updates & News',
+        text: 'Join the mailing list to receive occasional updates on publications, academic events, and new blog posts from Prof. Dr. Cătălin-Gabriel Stănescu.',
+        formUrl: '/'
+      },
     postsPerPage: 5
 };
 
