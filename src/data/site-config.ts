@@ -13,6 +13,8 @@ export type SocialLink = Link & {
     icon: 'codepen' | 'dev' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'medium' | 'x-twitter' | 'substack' | 'googleScholar';
 };
 
+export type CTALinks = Link;
+
 export type Hero = {
     title?: string;
     text?: string;
@@ -37,6 +39,7 @@ export type SiteConfig = {
     hero?: Hero;
     subscribe?: Subscribe;
     postsPerPage?: number;
+    ctaLinks?: CTALinks[];
 };
 
 const siteConfig: SiteConfig = {
@@ -120,6 +123,11 @@ const siteConfig: SiteConfig = {
             href: '/contact'
         },
     ],
+    ctaLinks: [
+        { href: '/publications', text: 'Books' },
+        { href: '/contact', text: 'Contact' },
+        { href: '/blog', text: 'Blog' },
+      ],
     secondaryNavLinks: [
         {
             text: 'About',
@@ -149,7 +157,7 @@ const siteConfig: SiteConfig = {
     ],
     hero: {
         title: 'Prof Dr Cătălin-Gabriel Stănescu',
-        text: "Academic | Lawyer | Debt Collection Regulation Specialist unveiling the shadow realms of debt",
+        text: "Academic • Author • Lawyer • Debt Collection Expert",
         avatar: {
             src: '/avatar.jpg',
             alt: 'Cătălin-Gabriel Stănescu'
