@@ -1,6 +1,7 @@
 ---
 import HeaderNavLink from './HeaderNavLink.astro';
 import siteConfig from '../data/site-config.ts';
+import Search from './Search.astro';
 
 const primaryNavLinks = siteConfig.primaryNavLinks || [];
 
@@ -19,7 +20,7 @@ const { class: className } = Astro.props;
       </a>
     )
   }
-
+  <Search></Search>
   {
     primaryNavLinks.length > 0 && (
       <nav class="relative">

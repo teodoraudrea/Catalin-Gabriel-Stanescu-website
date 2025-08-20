@@ -3,8 +3,9 @@
     "type": "module",
     "version": "0.0.1",
     "scripts": {
-        "dev": "npx tinacms dev -c \"astro dev\"",
-        "build": "tinacms build && astro build",
+        "generate-index": "node src/scripts/generate-search.js",
+        "build": "npm run generate-index && npx tinacms build && astro build",
+        "dev": "npm run generate-index && npx tinacms dev -c \"astro dev\"",
         "preview": "tinacms build && astro preview",
         "astro": "astro"
     },
@@ -16,12 +17,14 @@
         "@fontsource-variable/figtree": "^5.1.1",
         "@vercel/analytics": "^1.5.0",
         "astro": "^5.1.1",
+        "lunr": "^2.3.9",
         "tailwindcss": "^3.4.17",
         "tinacms": "^2.7.2"
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.15",
         "@tinacms/cli": "^1.9.2",
+        "@types/lunr": "^2.3.7",
         "@types/node": "^22.13.6",
         "prettier": "^3.4.2",
         "prettier-plugin-tailwindcss": "^0.6.9"
