@@ -1,0 +1,23 @@
+---
+title: About
+# layout: ../../layouts/BaseLayout.astro
+# featureImage:
+#   src: '/about.webp'
+  # alt: The portrait of a person
+seo:
+  title: About
+  description: About Justin Case
+  image:
+    src: '/about.jpg'
+---
+
+import Timeline from '../../components/Timeline.astro';
+import { timelineItems } from '../../data/site-config';
+
+<Timeline
+  title="Experience Timeline"
+  description="Reverse-chronological overview of roles, projects, and milestones."
+  items={timelineItems}
+/>
+
+> Creativity is allowing yourself to make mistakes…

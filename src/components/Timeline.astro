@@ -1,0 +1,56 @@
+---
+import TimelineBlock from "./TimelineBlock.astro";
+import type { TimelineItem } from "../data/site-config";
+
+/**
+ * Very loose parser that tries to find the *first* 4-digit year
+ * in a "period" string like "2024–2025", "Jan 2023 – Present", "2019".
+ * Falls back to -Infinity (so non-parsable entries sink to bottom).
+ */
+function deriveYearFromPeriod(period: string): number {
+  const match = period.match(/(20\d{2}|19\d{2})/);
+  return match ? Number(match[1]) : Number.NEGATIVE_INFINITY;
+}
+
+export type TimelineProps = {
+  items: TimelineItem[];
+  /** Optional heading */
+  title?: string;
+  /** Optional description under the heading */
+  description?: string;
+};
+
+const { items, title, description } = Astro.props as TimelineProps;
+
+// Sort reverse-chronological using sortYear (if supplied) else first year in `period`
+const sorted = [...items].sort((a, b) => {
+  const ay = typeof a.sortYear === "number" ? a.sortYear : deriveYearFromPeriod(a.period);
+  const by = typeof b.sortYear === "number" ? b.sortYear : deriveYearFromPeriod(b.period);
+  return by - ay;
+});
+---
+
+<section class="w-full">
+  {title && (
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold text-slate-900">{title}</h2>
+      {description && <p class="mt-1 text-slate-600">{description}</p>}
+    </div>
+  )}
+
+  <ol class="relative space-y-8">
+    {sorted.map((it) => (
+      <TimelineBlock
+        period={it.period}
+        title={it.title}
+        subtitle={it.subtitle}
+        location={it.location}
+        content={it.content}
+        bullets={it.bullets}
+        images={it.images}
+        href={it.href}
+        sortYear={it.sortYear}
+      />
+    ))}
+  </ol>
+</section>
