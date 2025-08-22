@@ -3,15 +3,10 @@ import Highlight from './Highlight.astro';
 import type { HighlightProps } from '../data/site-config';
 
 const { highlights = [] }: { highlights?: HighlightProps[] } = Astro.props;
-
 ---
 
 <div class="flex flex-col gap-6 sm:flex-row sm:gap-4">
   {highlights.map((item) => (
-    <Highlight
-      tagText={item.tagText}
-      title={item.title}
-      description={item.description}
-    />
+    <Highlight {...item} />
   ))}
 </div>

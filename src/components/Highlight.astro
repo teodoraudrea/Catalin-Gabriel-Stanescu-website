@@ -1,15 +1,59 @@
 ---
 import Tag from './Tag.astro';
 
-const { tagText, title, description } = Astro.props;
+const {tagText, title, description, imageSrc, imageAlt = '', href} = Astro.props;
+
+const containerClasses =
+  'group relative overflow-hidden p-6 border rounded-lg shadow-sm bg-white ' +
+  'transition-colors hover:bg-slate-50 focus-within:bg-slate-50 ' +
+  'focus-visible:outline-none';
 ---
 
-<div class="p-6 border rounded-lg shadow-sm bg-white">
-  {tagText && (
-    <div class="mb-2">
-      <Tag text={tagText} />
-    </div>
-  )}
-  <h2 class="text-lg font-semibold mb-1">{title}</h2>
-  <p class="text-slate-600 text-sm">{description}</p>
-</div>
+{href ? (
+  <a
+    href={href}
+    class={containerClasses + ' block focus-visible:ring-2 focus-visible:ring-blue-500'}
+  >
+    {imageSrc && (
+      <div class="mb-3">
+        <img
+          src={imageSrc}
+          alt={imageAlt || title}
+          loading="lazy"
+          class="w-full h-40 object-cover rounded-md"
+        />
+      </div>
+    )}
+
+    {tagText && (
+      <div class="mb-2">
+        <Tag text={tagText} />
+      </div>
+    )}
+
+    <h2 class="text-lg font-semibold mb-1">{title}</h2>
+    <p class="text-slate-600 text-sm">{description}</p>
+  </a>
+) : (
+  <div class={containerClasses}>
+    {imageSrc && (
+      <div class="mb-3">
+        <img
+          src={imageSrc}
+          alt={imageAlt || title}
+          loading="lazy"
+          class="w-full h-40 object-cover rounded-md"
+        />
+      </div>
+    )}
+
+    {tagText && (
+      <div class="mb-2">
+        <Tag text={tagText} />
+      </div>
+    )}
+
+    <h2 class="text-lg font-semibold mb-1">{title}</h2>
+    <p class="text-slate-600 text-sm">{description}</p>
+  </div>
+)}
