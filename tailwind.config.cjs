@@ -18,6 +18,10 @@ module.exports = {
             typography: (theme) => ({
                 DEFAULT: {
                     css: {
+                        h3: {
+                            marginTop: '0',
+                            marginBottom: '0',
+                          },
                         a: {
                             color: 'rgb(var(--color-primary))',
                             '&:hover': {

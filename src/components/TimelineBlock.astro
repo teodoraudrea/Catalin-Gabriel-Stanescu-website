@@ -1,0 +1,73 @@
+---
+import type { TimelineItem } from '../data/site-config';
+
+export type TimelineBlockProps = TimelineItem;
+const {
+  period,
+  title,
+  subtitle,
+  location,
+  content,
+  bullets = [],
+  images = [],
+  href,
+} = Astro.props as TimelineBlockProps;
+---
+
+<li class="not-prose grid grid-cols-1 gap-2 md:gap-4 md:grid-cols-[1fr_minmax(10rem,14rem)]">
+  <!-- LEFT: content -->
+  <div class="relative order-2 md:order-1 md:pr-0">
+    <article class="not-prose group rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-colors hover:bg-slate-50">
+        <header class="mb-2 not-prose">
+            {href ? (
+              <a href={href} class="block p-0">
+                <h3 class="m-0 !mt-0 !mb-0 p-0 leading-tight text-base font-semibold underline decoration-transparent underline-offset-4 transition-[text-decoration-color] group-hover:decoration-primary">
+                  {title}
+                </h3>
+              </a>
+            ) : (
+              <h3 class="m-0 !mt-0 !mb-0 p-0 leading-tight text-base font-semibold">
+                {title}
+              </h3>
+            )}
+            {location && <span class="block text-xs text-slate-500 mt-0.5">{location}</span>}
+            {subtitle && <p class="text-sm text-slate-600 mt-0.5">{subtitle}</p>}
+          </header>
+
+      {content && <p class="text-sm leading-6 text-slate-700">{content}</p>}
+
+      {bullets.length > 0 && (
+        <ul class="mt-2 list-disc pl-4 text-sm text-slate-700">
+          {bullets.map((b) => <li>{b}</li>)}
+        </ul>
+      )}
+
+      {images.length > 0 && (
+        <div class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
+          {images.map((img) => (
+            <img
+              src={img.src}
+              alt={img.alt ?? ""}
+              loading="lazy"
+              class="h-24 w-full rounded-md object-cover"
+            />
+          ))}
+        </div>
+      )}
+    </article>
+  </div>
+
+  <!-- RIGHT: timeline axis + period -->
+  <div class="relative order-1 md:order-2 md:pl-8">
+    <!-- vertical line (only show on md+) -->
+    <span aria-hidden="true" class="hidden md:flex absolute left-0 top-0 bottom-0 justify-center">
+      <span class="w-px bg-slate-200 block"></span>
+    </span>
+
+    <!-- dot (only show on md+) -->
+    <span aria-hidden="true" class="hidden md:block absolute -left-[5px] mt-1.5 h-2.5 w-2.5 rounded-full bg-primary shadow ring-2 ring-white"></span>
+
+    <!-- period text (above on mobile, right on md+) -->
+    <div class="text-sm font-medium text-slate-900 mb-1 md:mb-0 md:ml-4">{period}</div>
+  </div>
+</li>
