@@ -22,23 +22,32 @@ const latestPosts = posts.filter(({ data }) => !data.isFeatured).slice(0, 3);
     </div>
 
     <main class="grow py-2 sm:py-4">
-        <div class=" py-4 flex flex-col gap-6 sm:flex-row sm:gap-4 sm:justify-center sm:items-stretch">
+        <div class="py-4 flex flex-col gap-6 sm:flex-row sm:gap-4 sm:justify-center sm:items-stretch">
             <Highlights
                 highlights={[
                     {
-                    tagText: 'Latest book',
-                    title: 'New Paper in debt collection',
-                    description: 'Why do they want ALL of our money?'
+                        tagText: 'Latest book',
+                        title: 'New Paper in Debt Collection',
+                        description: 'Why do they want ALL of our money?',
+                        imageSrc: '/debt-collection-dummy.jpg',
+                        imageAlt: 'Open book with notes on debt collection',
+                        href: '/'
                     },
                     {
-                    tagText: 'Keynote',
-                    title: 'LawConf 2025',
-                    description: 'Slides and recap now available.'
+                        tagText: 'Keynote',
+                        title: 'LawConf 2025',
+                        description: 'Slides and recap now available.',
+                        imageSrc: '/law-conference-dummy.jpg',
+                        imageAlt: 'Speaker on stage at a law conference',
+                        href: '/'
                     },
                     {
-                    tagText: 'Research',
-                    title: 'Debt and EU',
-                    description: 'Trends in debt enforcement worldwide.'
+                        tagText: 'Research',
+                        title: 'Debt and EU',
+                        description: 'Trends in debt enforcement worldwide.',
+                        imageSrc: '/eu-debt-data-dummy.jpg',
+                        imageAlt: 'European map with data overlays',
+                        href: '/'
                     }
                 ]}
             />

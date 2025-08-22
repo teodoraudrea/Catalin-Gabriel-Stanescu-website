@@ -13,6 +13,12 @@ export type HighlightProps = {
     tagText?: string;
     title: string;
     description: string;
+    /** Optional image path shown at the top of the card */
+    imageSrc?: string;
+    /** Optional alt text for the image (falls back to title) */
+    imageAlt?: string;
+    /** Optional link; if provided, the card becomes clickable */
+    href?: string;
   };
 
 export type SocialLink = Link & {
