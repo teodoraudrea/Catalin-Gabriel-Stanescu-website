@@ -12,12 +12,36 @@ seo:
 ---
 
 import Timeline from '../../components/Timeline.astro';
-import { timelineItems } from '../../data/site-config';
+import { timelineAcademic, timelineGrants, timelineLegal, timelinePublic, timelineTalks} from '../../data/site-config';
 
 <Timeline
-  title="Experience Timeline"
-  description="Reverse-chronological overview of roles, projects, and milestones."
-  items={timelineItems}
+  title="Academic experience"
+  description="Reverse-chronological overview"
+  items={timelineAcademic}
+/>
+
+<Timeline
+  title="Grants"
+  description="Reverse-chronological overview"
+  items={timelineGrants}
+/>
+
+<Timeline
+  title="Legal experiences"
+  description="Reverse-chronological overview"
+  items={timelineLegal}
+/>
+
+<Timeline
+  title="Talks and conferences"
+  description="Reverse-chronological overview"
+  items={timelineTalks}
+/>
+
+<Timeline
+  title="Public service"
+  description="Reverse-chronological overview"
+  items={timelinePublic}
 />
 
 > Creativity is allowing yourself to make mistakes…
