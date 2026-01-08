@@ -58,4 +58,4 @@ At its core, my teaching seeks to demystify law without trivialising it. I view 
 
 <img src="https://assets.tina.io/2d1137a0-60c0-48b1-8255-6ce1571aba55/hero.webp"
      alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px; width: 750px" />
+     style="float: left; margin-right: 10px; width: 250px;" />
