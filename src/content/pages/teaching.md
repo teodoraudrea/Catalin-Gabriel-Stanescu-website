@@ -5,7 +5,7 @@ seo:
   description: Catalin Gabriel stanescu Teaching
 ---
 
-# Teaching Experience
+## Teaching Experience
 
 My teaching activity spans more than two decades and reflects a sustained engagement with legal education across jurisdictions, academic cultures, and levels of study. I have taught core and advanced courses in private law, international economic law, consumer law, law and technology, and law and political economy, combining doctrinal rigor with critical and interdisciplinary perspectives. My pedagogical approach is shaped by comparative reasoning, socio-legal analysis, and a strong emphasis on conceptual clarity.
 
