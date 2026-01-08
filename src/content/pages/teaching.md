@@ -53,3 +53,5 @@ I have extensive experience in designing and grading written and oral examinatio
 ## Pedagogical Outlook
 
 At its core, my teaching seeks to demystify law without trivialising it. I view legal education as a formative process that should cultivate critical judgment, ethical awareness, and intellectual courage. In an era of platform governance, automated decision-making, and financialisation, I consider it essential that legal education prepares students to confront uncertainty, complexity, and institutional fragility with both analytical discipline and normative awareness.
+
+![](https://assets.tina.io/2d1137a0-60c0-48b1-8255-6ce1571aba55/hero.webp)
