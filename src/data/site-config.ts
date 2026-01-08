@@ -893,7 +893,7 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        title: 'Prof Dr Cătălin-Gabriel Stănescu',
+        title: 'Cătălin-Gabriel Stănescu',
         text: "Academic • Author • Lawyer • Debt Collection Expert",
         avatar: {
             src: '/avatar.jpg',
