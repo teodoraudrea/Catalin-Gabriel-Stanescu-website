@@ -6,17 +6,19 @@
 @tailwind utilities;
 
 @layer base {
+    /* Default (light): purple primary on a white background */
     :root {
-        --color-primary: 34 33 65; /* #222141 */
+        --color-primary: 34 33 65; /* #222141 (purple) */
         --color-bg: 255 255 255; /* Light mode background */
-        --color-text: 0 0 0; /* Light mode text */
+        --color-text: 0 0 0; /* Dark text */
     }
 
+    /* Dark mode: purple background with white accents (primary becomes white) */
     @media (prefers-color-scheme: dark) {
         :root {
-            --color-primary: 255 165 0; /* Example: Orange primary color for dark mode */
-            --color-bg: 20 20 30; /* Dark background */
-            --color-text: 255 255 255; /* White text */
+            --color-primary: 255 255 255; /* White primary on purple background */
+            --color-bg: 34 33 65; /* Purple background */
+            --color-text: 255 255 255; /* Light text */
         }
     }
 
