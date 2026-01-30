@@ -54,6 +54,7 @@ Purpose: help an AI coding agent be immediately productive in this Astro + Tina 
 - Mark a post as featured: add `isFeatured: true` to frontmatter; homepage will include it via `featuredPosts` filter in `src/pages/index.astro`.
 - Add pagination: change `postsPerPage` in `src/data/site-config.ts` and verify `src/pages/blog/[...page].astro` navigation.
 - Add a new site image: put in `public/` and reference via frontmatter `featureImage.src: "/my-image.jpg"`.
+- Add publications preview rows: use `src/components/Publications.astro` and include it in an MDX page (example: `src/content/pages/publications.mdx`). Pass `rows` as an array of objects `{ title, publications: [{ title, authors?, year?, href? }], moreHref }`. The long list page is `src/content/pages/publications/all.mdx` and is linked from the row `moreHref`.
 
 ## Things an AI agent should NOT assume 🚫
 - Do not edit the legacy top-level `content/` directory unless explicitly instructed; source of truth is `src/content/` (see `src/content.config.ts` and `tina/config.ts`).
