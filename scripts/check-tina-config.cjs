@@ -42,9 +42,10 @@ async function run() {
       const res = await fetch(url, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
+  'Content-Type': 'application/json',
+  'X-API-KEY': token,
+},
+
         body: JSON.stringify({ query }),
       });
 
