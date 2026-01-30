@@ -65,4 +65,5 @@ const publications = defineCollection({
     })
 });
 
-export const collections = { blog, pages, publications };
+// publications collection removed from export so only `blog` and `pages` are editable in Tina
+export const collections = { blog, pages };
