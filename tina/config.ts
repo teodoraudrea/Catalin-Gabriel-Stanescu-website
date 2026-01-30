@@ -13,7 +13,9 @@ const isTinaCloudConfigured = Boolean(process.env.NEXT_PUBLIC_TINA_CLIENT_ID && 
 if (!isTinaCloudConfigured) {
   console.warn('Warning: NEXT_PUBLIC_TINA_CLIENT_ID and/or TINA_TOKEN not set. Remote Tina Cloud features (remote edits, cloud media uploads) will be unavailable.');
 } else {
-  console.info('Tina Cloud credentials found — enabling Tina Cloud features and media store.');
+  // Non-sensitive log: print client ID so CI/Vercel logs can confirm which Tina client is active.
+  // NOTE: Do not log `TINA_TOKEN` (secret). The `clientId` is safe to log for debugging.
+  console.info(`Tina Cloud credentials found — enabling Tina Cloud features and media store. clientId=${process.env.NEXT_PUBLIC_TINA_CLIENT_ID}`);
 }
 
 // Choose the media store: use Tina Cloud when credentials are present, otherwise fall back to local filesystem (public/)
