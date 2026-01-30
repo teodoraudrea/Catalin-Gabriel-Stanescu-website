@@ -129,6 +129,39 @@ export default defineConfig({
           },
         ],
       },
+      {
+        name: "publications",
+        label: "Publication Rows",
+        path: "src/content/publications",
+        format: "md",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Row title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "object",
+            name: "publications",
+            label: "Publications",
+            list: true,
+            fields: [
+              { type: "string", name: "title", label: "Title", required: true },
+              { type: "string", name: "authors", label: "Authors" },
+              { type: "string", name: "year", label: "Year" },
+              { type: "string", name: "href", label: "URL" }
+            ]
+          },
+          {
+            type: "string",
+            name: "moreHref",
+            label: "More link",
+            description: "URL to the 'all publications' page"
+          }
+        ]
+      },
     ],
   },
 });
