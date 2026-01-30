@@ -41,6 +41,9 @@ function formatCanonicalURL(url: string | URL) {
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>{title}</title>
 <meta name="generator" content={Astro.generator} />
+<!-- Signal supported color schemes to user agents to reduce forced-inversion heuristics -->
+<meta name="color-scheme" content="light dark" />
+<meta name="supported-color-schemes" content="light dark" />
 
 <!-- Fonts -->
 <link rel="preload" as="font" type="font/woff2" href={figtreeWoff2} crossorigin="anonymous" />

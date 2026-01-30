@@ -12,7 +12,10 @@ const socialLinks = siteConfig.socialLinks || [];
     (hero?.title || hero?.text || hero?.avatar?.src) && (
         <>
             {hero?.backgroundImage?.src && (
-                <div class="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: `url(${hero?.backgroundImage?.src})` }} />
+                <>
+                    <div class="absolute inset-0 bg-cover bg-center hero-bg" style={{ backgroundImage: `url(${hero?.backgroundImage?.src})` }} />
+                    <div class="hero-overlay" />
+                </>
             )}
             <section class="px-4 py-4 relative sm:px-8 sm:py-4">
                 <div class="w-full max-w-6xl mx-auto flex flex-col items-center text-center">

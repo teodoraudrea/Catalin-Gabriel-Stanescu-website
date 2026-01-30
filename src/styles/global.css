@@ -11,6 +11,8 @@
         --color-primary: 34 33 65; /* #222141 (purple) */
         --color-bg: 255 255 255; /* Light mode background */
         --color-text: 0 0 0; /* Dark text */
+        /* Tell user agents which color schemes the page supports */
+        color-scheme: light dark;
     }
 
     /* Dark mode: purple background with white accents (primary becomes white) */
@@ -20,6 +22,24 @@
             --color-bg: 34 33 65; /* Purple background */
             --color-text: 255 255 255; /* Light text */
         }
+    }
+
+    /* Prevent forced-color / forced-dark heuristics from inverting images and the hero background */
+    img, picture, .hero-bg {
+        /* Prevent user-agent forced color adjustments where supported */
+        forced-color-adjust: none;
+        /* Ensure filters aren't applied by UA heuristics */
+        -webkit-filter: none !important;
+        filter: none !important;
+    }
+
+    /* Hero overlay: tint the background image so it looks consistent in both modes */
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        /* Use the page background color as a translucent overlay so it adapts to light/dark */
+        background-color: rgb(var(--color-bg) / 0.55);
+        pointer-events: none;
     }
 
     body {
