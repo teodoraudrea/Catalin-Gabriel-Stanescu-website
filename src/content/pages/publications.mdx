@@ -1,0 +1,33 @@
+---
+title: Publications
+seo:
+  title: Publications — Cătălin-Gabriel Stănescu
+  description: A curated selection of recent and relevant publications.
+---
+
+import Publications from '../../components/Publications.astro';
+
+# Publications
+
+Below is a curated preview of publications grouped into rows. Use the "More publications" button on the right to see a complete list.
+
+<Publications rows={[
+  {
+    title: 'Books & Monographs',
+    publications: [
+      { title: 'Debt Collection and Consumer Protection', authors: 'C.-G. Stănescu', year: '2024', href: '/publications/all' },
+      { title: 'Energy Law in Practice', authors: 'C.-G. Stănescu', year: '2022' },
+      { title: 'Comparative Contract Law', authors: 'C.-G. Stănescu', year: '2019' }
+    ],
+    moreHref: '/publications/all'
+  },
+  {
+    title: 'Selected Articles',
+    publications: [
+      { title: 'Informal Debt Collection Practices', authors: 'C.-G. Stănescu', year: '2025' },
+      { title: 'Consumer Protection in the EU', authors: 'C.-G. Stănescu', year: '2023' },
+      { title: 'Cross-border Enforcement', authors: 'C.-G. Stănescu', year: '2021' }
+    ],
+    moreHref: '/publications/all'
+  }
+]} />
