@@ -7,7 +7,7 @@ const { title, publishDate, updatedDate, featureImage, excerpt } = post.data;
 ---
 
 <article class="mb-12 sm:mb-16">
-    <header class="max-w-3xl mx-auto">
+    <header class="max-w-6xl mx-auto">
         <div class="mb-2 text-sm uppercase tracking-wider text-slate-500 sm:mb-3">
             <span class="text-primary">Featured</span>
             {' / '}
@@ -36,12 +36,12 @@ const { title, publishDate, updatedDate, featureImage, excerpt } = post.data;
     }
     {
         excerpt && (
-            <div class="max-w-3xl mx-auto mt-6">
+            <div class="max-w-6xl mx-auto mt-6">
                 <div class="prose prose-slate sm:prose-lg max-w-none">{excerpt}</div>
             </div>
         )
     }
-    <div class="max-w-3xl mx-auto mt-8">
+    <div class="max-w-6xl mx-auto mt-8">
         <a
             class="inline-flex justify-center items-center gap-1.5 bg-primary text-white px-8 py-2.5 font-semibold rounded-full transition duration-300 hover:shadow-button"
             href={`/blog/${post.id}/`}

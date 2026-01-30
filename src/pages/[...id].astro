@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import { type Image } from '../data/site-config';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Publications from '../components/Publications.astro';
 
 export async function getStaticPaths() {
     const pages = await getCollection('pages');
@@ -23,12 +24,23 @@ if (featureImage?.src) {
 if (seo?.image?.src) {
     socialImage = seo.image;
 }
+
+// If this route is the Publications page, load rows from the `publications` collection
+let publicationRows;
+if (page.id === 'publications') {
+    const pubs = (await getCollection('publications')).map((p) => ({
+        title: p.data.title,
+        publications: p.data.publications || [],
+        moreHref: p.data.moreHref || '/publications/all'
+    }));
+    publicationRows = pubs;
+}
 ---
 
 <BaseLayout title={seo?.title ?? title} description={seo?.description} image={socialImage}>
     <main class="grow px-4 py-12 sm:px-8 sm:py-16">
         <article class="max-w-6xl mx-auto">
-            <header class="max-w-3xl mx-auto mb-9">
+            <header class="max-w-6xl mx-auto mb-9">
                 <h1 class="text-slate-900 text-4xl sm:text-5xl font-bold">{title}</h1>
             </header>
             {
@@ -39,11 +51,16 @@ if (seo?.image?.src) {
                     </figure>
                 )
             }
-            <div class="max-w-3xl mx-auto">
+            <div class="max-w-6xl mx-auto">
                 <div class="prose prose-slate sm:prose-lg max-w-none">
                     <Content />
                 </div>
-            </div>
-        </article>
+            </div>            {
+                page.id === 'publications' && publicationRows && (
+                    <div class="max-w-6xl mx-auto mt-8">
+                        <Publications rows={publicationRows} />
+                    </div>
+                )
+            }        </article>
     </main>
 </BaseLayout>

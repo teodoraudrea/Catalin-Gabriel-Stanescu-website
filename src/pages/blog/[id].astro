@@ -36,7 +36,7 @@ if (seo?.image?.src) {
 <BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={socialImage} pageType="article">
     <main class="grow px-4 py-12 sm:px-8 sm:py-16">
         <article class="max-w-6xl mx-auto mb-12 sm:mb-16">
-            <header class="max-w-3xl mx-auto mb-6 sm:mb-8">
+            <header class="max-w-6xl mx-auto mb-6 sm:mb-8">
                 <div class="mb-3 text-sm uppercase tracking-wider text-slate-500">
                     {
                         isFeatured && (
@@ -68,7 +68,7 @@ if (seo?.image?.src) {
                     </figure>
                 )
             }
-            <div class="max-w-3xl mx-auto">
+            <div class="max-w-6xl mx-auto">
                 <div class="prose prose-slate sm:prose-lg max-w-none">
                     <Content />
                 </div>
@@ -100,7 +100,7 @@ if (seo?.image?.src) {
         </article>
         {
             (prevPost || nextPost) && (
-                <div class="max-w-3xl mx-auto mb-12 sm:mb-16">
+                <div class="max-w-6xl mx-auto mb-12 sm:mb-16">
                     <h2 class="mb-8 text-sm uppercase tracking-wider text-slate-900 after:content-[''] after:block after:w-16 after:h-px after:bg-primary after:mt-4 sm:mb-12">
                         Read Next
                     </h2>

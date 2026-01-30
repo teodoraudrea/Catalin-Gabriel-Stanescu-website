@@ -67,17 +67,17 @@ const latestPosts = posts.filter(({ data }) => !data.isFeatured).slice(0, 3);
         {
             latestPosts?.length > 0 && (
                 <div class="px-4 mb-12 sm:px-8 sm:mb-16">
-                    <div class="max-w-3xl mx-auto mb-8 sm:mb-12">
+                    <div class="max-w-6xl mx-auto mb-8 sm:mb-12">
                         <h2 class="text-sm uppercase tracking-wider text-slate-900 after:content-[''] after:block after:w-16 after:h-px after:bg-primary after:mt-4">
                             Latest Articles
                         </h2>
                     </div>
-                    <div class="max-w-3xl mx-auto xl:max-w-6xl">
+                    <div class="max-w-6xl mx-auto xl:max-w-6xl">
                         {latestPosts.map((post) => (
                             <PostPreview post={post} />
                         ))}
                     </div>
-                    <div class="max-w-3xl mx-auto pt-8 border-t border-slate-200 sm:pt-12">
+                    <div class="max-w-6xl mx-auto pt-8 border-t border-slate-200 sm:pt-12">
                         <a
                             class="px-8 py-2.5 inline-flex gap-1.5 justify-center items-center font-semibold bg-primary text-white rounded-full transition duration-300 hover:shadow-button"
                             href="/blog"

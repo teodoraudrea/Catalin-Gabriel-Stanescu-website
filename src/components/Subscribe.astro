@@ -9,7 +9,7 @@ const { class: className } = Astro.props;
 {
     (subscribe?.title || subscribe?.text || subscribe?.formUrl) && (
         <section class={className}>
-            <div class="w-full max-w-3xl mx-auto px-4 py-8 flex flex-col items-center bg-slate-50 border border-slate-200 rounded-md text-center sm:px-12 sm:py-14">
+            <div class="w-full max-w-6xl mx-auto px-4 py-8 flex flex-col items-center bg-slate-50 border border-slate-200 rounded-md text-center sm:px-12 sm:py-14">
                 {subscribe?.title && <h2 class="max-w-xl text-2xl font-bold text-slate-900 sm:text-3xl">{subscribe?.title}</h2>}
                 {subscribe?.text && <p class:list={['max-w-xl text-slate-700 sm:text-lg', { 'mt-4': subscribe?.title }]}>{subscribe?.text}</p>}
                 {subscribe?.formUrl ? (
