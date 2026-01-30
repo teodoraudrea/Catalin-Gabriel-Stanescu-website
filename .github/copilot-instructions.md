@@ -12,8 +12,10 @@ Purpose: help an AI coding agent be immediately productive in this Astro + Tina 
 ## Key workflows & commands ▶️
 - Local development (CMS + site):
   - npm install
-  - Set Tina env vars when necessary: `TINA_TOKEN` and `NEXT_PUBLIC_TINA_CLIENT_ID` for previewing CMS features.
+  - Set Tina env vars when necessary: `TINA_TOKEN` and `NEXT_PUBLIC_TINA_CLIENT_ID` for previewing remote CMS features (required for `tinacms build` and remote media uploads).
   - npm run dev  # runs `npx tinacms dev -c "astro dev"`
+
+> Note: The project now skips `tinacms build` during `npm run build` when Tina env vars are missing to avoid build failures on systems without Tina Cloud credentials. See `scripts/tina-build-or-skip.js` for the behavior.
 - Production build:
   - npm run build  # runs `tinacms build && astro build`
   - npm run preview  # build + `astro preview`

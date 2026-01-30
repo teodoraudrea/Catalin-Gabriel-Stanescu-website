@@ -4,8 +4,8 @@
     "version": "0.0.1",
     "scripts": {
         "dev": "npx tinacms dev -c \"astro dev\"",
-        "build": "tinacms build && astro build",
-        "preview": "tinacms build && astro preview",
+        "build": "node scripts/tina-build-or-skip.js",
+        "preview": "node scripts/tina-build-or-skip.js && astro preview --port 4322",
         "astro": "astro"
     },
     "dependencies": {

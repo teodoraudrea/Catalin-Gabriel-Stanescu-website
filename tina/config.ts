@@ -7,10 +7,15 @@ const branch =
   process.env.HEAD ||
   "main";
 
+// Warn clearly if Tina Cloud credentials are missing — helpful for remote builds and media.
+if (!process.env.NEXT_PUBLIC_TINA_CLIENT_ID || !process.env.TINA_TOKEN) {
+  console.warn('Warning: NEXT_PUBLIC_TINA_CLIENT_ID and/or TINA_TOKEN not set. Remote Tina Cloud features (remote edits, cloud media uploads) will be unavailable.');
+}
+
 export default defineConfig({
   branch,
 
-  // Get from tina.io
+  // Get from tina.io (may be undefined in local dev)
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   token: process.env.TINA_TOKEN,
 
