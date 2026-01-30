@@ -43,12 +43,18 @@ if (hasS3) {
     },
   };
 } else if (isTinaCloudConfigured) {
-  console.info('Using Tina Cloud media store');
+  console.info('Using Tina Cloud media store (repo-backed by default)');
+  // Use repo-based media settings by default so uploads end up in the repo `public/` folder
   mediaConfig = {
     tina: {
-      mediaRoot: "",
+      mediaRoot: "uploads",
       publicFolder: "public",
+      // `static: false` means Tina will manage media via the configured media store
+      static: false,
     },
+    // Optional: Tina supports a `loadCustomStore` hook to return a custom media store implementation
+    // Example placeholder (not required for built-in repo-based store):
+    // loadCustomStore: async () => { /* return custom store */ },
   };
 } else {
   console.info('Using local filesystem media store (public/)');

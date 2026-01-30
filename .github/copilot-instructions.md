@@ -51,10 +51,10 @@ Purpose: help an AI coding agent be immediately productive in this Astro + Tina 
 - The app uses environment detection logic to pick `branch` from `GITHUB_BRANCH`, `VERCEL_GIT_COMMIT_REF`, or `HEAD`.
 - Media stores: The project supports three media configurations (in order of precedence):
   1. **S3** — when `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `S3_BUCKET`, and `AWS_REGION` are set (recommended for production cloud media). The code will use S3 automatically when these env vars are present.
-  2. **Tina Cloud** — when `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` are set (Tina Cloud media will be used).
+  2. **Tina Cloud (repo-backed)** — when `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` are set. The config defaults to repo-based media (`public/` with `mediaRoot: uploads`) so media are stored in the repo when you configure a **Git** media store in the Tina dashboard.
   3. **Local filesystem** — fallback when cloud creds are absent; media are written to `public/`.
 
-  In practice: set the provider env vars in Vercel (or your CI) and re-deploy — the build logs print which media store was detected. If using Tina Cloud media, ensure your Tina project has a configured Media Store in the Tina dashboard.
+  In practice: set the provider env vars in Vercel (or your CI) and re-deploy — the build logs print which media store was detected. If using Tina Cloud media with a Git-backed store, configure it in the Tina dashboard (Media → Add Media Store → GitHub) and click **Resync Media**. After a successful `tinacms build` the admin will show the Media Manager and uploads will appear as commits under `public/` in your repo.
 
 - **Editable content:** Only the `blog` collection (`src/content/blog`) is editable via the Tina admin. All other site content (for example, files in `src/content/pages` and `src/content/publications`) should be edited directly in VSCode and committed to the repo.
 - MD and MDX are both supported (`@astrojs/mdx` integration present), so posts may be `.md` or `.mdx`.
