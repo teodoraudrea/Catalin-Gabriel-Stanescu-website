@@ -49,6 +49,8 @@ Purpose: help an AI coding agent be immediately productive in this Astro + Tina 
 ## CMS specifics & deployment notes 🧾
 - Tina CMS configuration in `tina/config.ts` expects content at `src/content/blog` and publishes admin UI into `public/admin` (see `build.outputFolder`).
 - The app uses environment detection logic to pick `branch` from `GITHUB_BRANCH`, `VERCEL_GIT_COMMIT_REF`, or `HEAD`.
+- Tina Cloud media: When `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` env vars are set (e.g., in Vercel), the CMS uses Tina Cloud media for uploads. If these are not set, the project falls back to a local filesystem media store that writes to `public/` and `tinacms build` is skipped in CI to avoid failures.
+- **Editable content:** Only the `blog` collection (`src/content/blog`) is editable via the Tina admin. All other site content (for example, files in `src/content/pages` and `src/content/publications`) should be edited directly in VSCode and committed to the repo.
 - MD and MDX are both supported (`@astrojs/mdx` integration present), so posts may be `.md` or `.mdx`.
 
 ## Quick tasks examples for an agent (be explicit) ✔️

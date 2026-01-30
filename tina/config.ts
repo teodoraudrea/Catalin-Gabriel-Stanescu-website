@@ -7,10 +7,29 @@ const branch =
   process.env.HEAD ||
   "main";
 
-// Warn clearly if Tina Cloud credentials are missing — helpful for remote builds and media.
-if (!process.env.NEXT_PUBLIC_TINA_CLIENT_ID || !process.env.TINA_TOKEN) {
+// Decide whether Tina Cloud is configured and warn if not. Also choose appropriate media store accordingly.
+const isTinaCloudConfigured = Boolean(process.env.NEXT_PUBLIC_TINA_CLIENT_ID && process.env.TINA_TOKEN);
+
+if (!isTinaCloudConfigured) {
   console.warn('Warning: NEXT_PUBLIC_TINA_CLIENT_ID and/or TINA_TOKEN not set. Remote Tina Cloud features (remote edits, cloud media uploads) will be unavailable.');
+} else {
+  console.info('Tina Cloud credentials found — enabling Tina Cloud features and media store.');
 }
+
+// Choose the media store: use Tina Cloud when credentials are present, otherwise fall back to local filesystem (public/)
+const mediaConfig = isTinaCloudConfigured
+  ? {
+      tina: {
+        mediaRoot: "",
+        publicFolder: "public",
+      },
+    }
+  : {
+      local: {
+        mediaRoot: "",
+        publicFolder: "public",
+      },
+    };
 
 export default defineConfig({
   branch,
@@ -23,12 +42,7 @@ export default defineConfig({
     outputFolder: "admin",
     publicFolder: "public",
   },
-  media: {
-    tina: {
-      mediaRoot: "",
-      publicFolder: "public",
-    },
-  },
+  media: mediaConfig,
   schema: {
     collections: [
       {
@@ -112,39 +126,6 @@ export default defineConfig({
             isBody: true,
           },
         ],
-      },
-      {
-        name: "publications",
-        label: "Publication Rows",
-        path: "src/content/publications",
-        format: "md",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Row title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "object",
-            name: "publications",
-            label: "Publications",
-            list: true,
-            fields: [
-              { type: "string", name: "title", label: "Title", required: true },
-              { type: "string", name: "authors", label: "Authors" },
-              { type: "string", name: "year", label: "Year" },
-              { type: "string", name: "href", label: "URL" }
-            ]
-          },
-          {
-            type: "string",
-            name: "moreHref",
-            label: "More link",
-            description: "URL to the 'all publications' page"
-          }
-        ]
       },
     ],
   },
