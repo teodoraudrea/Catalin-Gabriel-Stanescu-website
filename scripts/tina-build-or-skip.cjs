@@ -7,10 +7,18 @@ if (hasClient) {
   console.log('Tina credentials present — running `check-tina-config` then `tinacms build`');
   const check = spawnSync('node', ['scripts/check-tina-config.cjs'], { stdio: 'inherit' });
   if (check.status !== 0) {
-    // Instead of aborting the entire build, skip `tinacms build` so the static site can still deploy.
-    // This allows the site to be published while the token or remote config is fixed; admin features
-    // (remote editing / media manager) will remain disabled until credentials are corrected.
-    console.warn('tina config check failed — skipping `tinacms build`. See message above for details.');
+    // If a FORCE_TINA_BUILD env var is set, proceed with a build that skips cloud checks so Tina can
+    // re-index and update the remote schema. Use this as a temporary recovery mechanism only.
+    if (process.env.FORCE_TINA_BUILD === '1') {
+      console.warn('tina config check failed — but FORCE_TINA_BUILD=1 is set, proceeding with `tinacms build --skip-cloud-checks`');
+      const tinacms = spawnSync('npx', ['tinacms', 'build', '--skip-cloud-checks'], { stdio: 'inherit' });
+      if (tinacms.status !== 0) process.exit(tinacms.status);
+    } else {
+      // Instead of aborting the entire build, skip `tinacms build` so the static site can still deploy.
+      // This allows the site to be published while the token or remote config is fixed; admin features
+      // (remote editing / media manager) will remain disabled until credentials are corrected.
+      console.warn('tina config check failed — skipping `tinacms build`. See message above for details.');
+    }
   } else {
     const tinacms = spawnSync('npx', ['tinacms', 'build'], { stdio: 'inherit' });
     if (tinacms.status !== 0) process.exit(tinacms.status);
