@@ -4,6 +4,7 @@
     "version": "0.0.1",
     "scripts": {
         "dev": "npx tinacms dev -c \"astro dev\"",
+        "check:tina": "node scripts/check-tina-config.cjs",
         "build": "node scripts/tina-build-or-skip.cjs",
         "preview": "node scripts/tina-build-or-skip.cjs && astro preview --port 4322",
         "astro": "astro"
