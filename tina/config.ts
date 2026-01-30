@@ -18,20 +18,47 @@ if (!isTinaCloudConfigured) {
   console.info(`Tina Cloud credentials found — enabling Tina Cloud features and media store. clientId=${process.env.NEXT_PUBLIC_TINA_CLIENT_ID}`);
 }
 
-// Choose the media store: use Tina Cloud when credentials are present, otherwise fall back to local filesystem (public/)
-const mediaConfig = isTinaCloudConfigured
-  ? {
-      tina: {
-        mediaRoot: "",
-        publicFolder: "public",
-      },
-    }
-  : {
-      local: {
-        mediaRoot: "",
-        publicFolder: "public",
-      },
-    };
+// Choose the media store in this order of precedence:
+// 1) S3 (if AWS env vars are present) — for production cloud media
+// 2) Tina Cloud (if NEXT_PUBLIC_TINA_CLIENT_ID + TINA_TOKEN are present)
+// 3) Local filesystem (fallback for environments without cloud creds)
+const hasS3 = Boolean(
+  process.env.AWS_ACCESS_KEY_ID &&
+  process.env.AWS_SECRET_ACCESS_KEY &&
+  process.env.S3_BUCKET &&
+  process.env.AWS_REGION
+);
+
+let mediaConfig;
+if (hasS3) {
+  console.info(`Using S3 media store for bucket=${process.env.S3_BUCKET}`);
+  mediaConfig = {
+    s3: {
+      bucket: process.env.S3_BUCKET,
+      region: process.env.AWS_REGION,
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      mediaRoot: "",
+      publicFolder: "public",
+    },
+  };
+} else if (isTinaCloudConfigured) {
+  console.info('Using Tina Cloud media store');
+  mediaConfig = {
+    tina: {
+      mediaRoot: "",
+      publicFolder: "public",
+    },
+  };
+} else {
+  console.info('Using local filesystem media store (public/)');
+  mediaConfig = {
+    local: {
+      mediaRoot: "",
+      publicFolder: "public",
+    },
+  };
+}
 
 export default defineConfig({
   branch,
