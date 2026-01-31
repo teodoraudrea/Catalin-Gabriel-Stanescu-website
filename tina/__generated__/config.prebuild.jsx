@@ -1,35 +1,16 @@
+// tina/config.ts
 import { defineConfig } from "tinacms";
-
-// Detect the correct Git branch from hosting environment
-const branch =
-  process.env.GITHUB_BRANCH ||
-  process.env.VERCEL_GIT_COMMIT_REF ||
-  process.env.HEAD ||
-  "main";
-
-// Decide whether Tina Cloud is configured and warn if not. Also choose appropriate media store accordingly.
-const isTinaCloudConfigured = Boolean(process.env.NEXT_PUBLIC_TINA_CLIENT_ID && process.env.TINA_TOKEN);
-
+var branch = process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || process.env.HEAD || "main";
+var isTinaCloudConfigured = Boolean(process.env.NEXT_PUBLIC_TINA_CLIENT_ID && process.env.TINA_TOKEN);
 if (!isTinaCloudConfigured) {
-  console.warn('Warning: NEXT_PUBLIC_TINA_CLIENT_ID and/or TINA_TOKEN not set. Remote Tina Cloud features (remote edits, cloud media uploads) will be unavailable.');
+  console.warn("Warning: NEXT_PUBLIC_TINA_CLIENT_ID and/or TINA_TOKEN not set. Remote Tina Cloud features (remote edits, cloud media uploads) will be unavailable.");
 } else {
-  // Non-sensitive log: print client ID so CI/Vercel logs can confirm which Tina client is active.
-  // NOTE: Do not log `TINA_TOKEN` (secret). The `clientId` is safe to log for debugging.
-  console.info(`Tina Cloud credentials found — enabling Tina Cloud features and media store. clientId=${process.env.NEXT_PUBLIC_TINA_CLIENT_ID}`);
+  console.info(`Tina Cloud credentials found \u2014 enabling Tina Cloud features and media store. clientId=${process.env.NEXT_PUBLIC_TINA_CLIENT_ID}`);
 }
-
-// Choose the media store in this order of precedence:
-// 1) S3 (if AWS env vars are present) — for production cloud media
-// 2) Tina Cloud (if NEXT_PUBLIC_TINA_CLIENT_ID + TINA_TOKEN are present)
-// 3) Local filesystem (fallback for environments without cloud creds)
-const hasS3 = Boolean(
-  process.env.AWS_ACCESS_KEY_ID &&
-  process.env.AWS_SECRET_ACCESS_KEY &&
-  process.env.S3_BUCKET &&
-  process.env.AWS_REGION
+var hasS3 = Boolean(
+  process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY && process.env.S3_BUCKET && process.env.AWS_REGION
 );
-
-let mediaConfig;
+var mediaConfig;
 if (hasS3) {
   console.info(`Using S3 media store for bucket=${process.env.S3_BUCKET}`);
   mediaConfig = {
@@ -39,43 +20,39 @@ if (hasS3) {
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
       mediaRoot: "",
-      publicFolder: "public",
-    },
+      publicFolder: "public"
+    }
   };
 } else if (isTinaCloudConfigured) {
-  console.info('Using Tina Cloud media store (repo-backed by default)');
-  // Use repo-based media settings by default so uploads end up in the repo `public/` folder
+  console.info("Using Tina Cloud media store (repo-backed by default)");
   mediaConfig = {
     tina: {
       mediaRoot: "uploads",
       publicFolder: "public",
       // `static: false` means Tina will manage media via the configured media store
-      static: false,
-    },
+      static: false
+    }
     // Optional: Tina supports a `loadCustomStore` hook to return a custom media store implementation
     // Example placeholder (not required for built-in repo-based store):
     // loadCustomStore: async () => { /* return custom store */ },
   };
 } else {
-  console.info('Using local filesystem media store (public/)');
+  console.info("Using local filesystem media store (public/)");
   mediaConfig = {
     local: {
       mediaRoot: "",
-      publicFolder: "public",
-    },
+      publicFolder: "public"
+    }
   };
 }
-
-export default defineConfig({
+var config_default = defineConfig({
   branch,
-
   // Get from tina.io (may be undefined in local dev)
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   token: process.env.TINA_TOKEN,
-
   build: {
     outputFolder: "admin",
-    publicFolder: "public",
+    publicFolder: "public"
   },
   media: mediaConfig,
   schema: {
@@ -83,28 +60,30 @@ export default defineConfig({
       {
         name: "blog",
         label: "Blog Posts",
-        path: "src/content/blog", // Matches Astro's content structure
-        format: "md", // Allows Markdown & MDX
+        path: "src/content/blog",
+        // Matches Astro's content structure
+        format: "md",
+        // Allows Markdown & MDX
         fields: [
           {
             type: "string",
             name: "title",
             label: "Title",
             isTitle: true,
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "excerpt",
             label: "Excerpt",
-            description: "A short summary of the post, used in RSS feeds and previews",
+            description: "A short summary of the post, used in RSS feeds and previews"
           },
           {
             type: "datetime",
             name: "publishDate",
             label: "Publish Date",
             required: true,
-            description: "The date the post was published",
+            description: "The date the post was published"
           },
           {
             type: "object",
@@ -116,21 +95,21 @@ export default defineConfig({
                 type: "image",
                 name: "src",
                 label: "Image Source",
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "alt",
                 label: "Alt Text",
-                description: "Accessibility text for the feature image",
-              },
-            ],
+                description: "Accessibility text for the feature image"
+              }
+            ]
           },
           {
             type: "boolean",
             name: "isFeatured",
             label: "Featured Post",
-            description: "Mark as a featured post for homepage highlights",
+            description: "Mark as a featured post for homepage highlights"
           },
           {
             type: "object",
@@ -148,20 +127,23 @@ export default defineConfig({
                     type: "image",
                     name: "src",
                     label: "Image Source",
-                    required: true,
-                  },
-                ],
-              },
-            ],
+                    required: true
+                  }
+                ]
+              }
+            ]
           },
           {
             type: "rich-text",
             name: "body",
             label: "Body",
-            isBody: true,
-          },
-        ],
-      },
-    ],
-  },
+            isBody: true
+          }
+        ]
+      }
+    ]
+  }
 });
+export {
+  config_default as default
+};

@@ -84,8 +84,6 @@ export type Query = {
   document: DocumentNode;
   blog: Blog;
   blogConnection: BlogConnection;
-  publications: Publications;
-  publicationsConnection: PublicationsConnection;
 };
 
 
@@ -124,24 +122,8 @@ export type QueryBlogConnectionArgs = {
   filter?: InputMaybe<BlogFilter>;
 };
 
-
-export type QueryPublicationsArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryPublicationsConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<PublicationsFilter>;
-};
-
 export type DocumentFilter = {
   blog?: InputMaybe<BlogFilter>;
-  publications?: InputMaybe<PublicationsFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -181,7 +163,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Blog | Publications | Folder;
+export type DocumentNode = Blog | Folder;
 
 export type BlogFeatureImage = {
   __typename?: 'BlogFeatureImage';
@@ -282,50 +264,6 @@ export type BlogConnection = Connection & {
   edges?: Maybe<Array<Maybe<BlogConnectionEdges>>>;
 };
 
-export type PublicationsPublications = {
-  __typename?: 'PublicationsPublications';
-  title: Scalars['String']['output'];
-  authors?: Maybe<Scalars['String']['output']>;
-  year?: Maybe<Scalars['String']['output']>;
-  href?: Maybe<Scalars['String']['output']>;
-};
-
-export type Publications = Node & Document & {
-  __typename?: 'Publications';
-  title: Scalars['String']['output'];
-  publications?: Maybe<Array<Maybe<PublicationsPublications>>>;
-  moreHref?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type PublicationsPublicationsFilter = {
-  title?: InputMaybe<StringFilter>;
-  authors?: InputMaybe<StringFilter>;
-  year?: InputMaybe<StringFilter>;
-  href?: InputMaybe<StringFilter>;
-};
-
-export type PublicationsFilter = {
-  title?: InputMaybe<StringFilter>;
-  publications?: InputMaybe<PublicationsPublicationsFilter>;
-  moreHref?: InputMaybe<StringFilter>;
-};
-
-export type PublicationsConnectionEdges = {
-  __typename?: 'PublicationsConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Publications>;
-};
-
-export type PublicationsConnection = Connection & {
-  __typename?: 'PublicationsConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<PublicationsConnectionEdges>>>;
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument: DocumentNode;
@@ -335,8 +273,6 @@ export type Mutation = {
   createFolder: DocumentNode;
   updateBlog: Blog;
   createBlog: Blog;
-  updatePublications: Publications;
-  createPublications: Publications;
 };
 
 
@@ -384,27 +320,13 @@ export type MutationCreateBlogArgs = {
   params: BlogMutation;
 };
 
-
-export type MutationUpdatePublicationsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: PublicationsMutation;
-};
-
-
-export type MutationCreatePublicationsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: PublicationsMutation;
-};
-
 export type DocumentUpdateMutation = {
   blog?: InputMaybe<BlogMutation>;
-  publications?: InputMaybe<PublicationsMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DocumentMutation = {
   blog?: InputMaybe<BlogMutation>;
-  publications?: InputMaybe<PublicationsMutation>;
 };
 
 export type BlogFeatureImageMutation = {
@@ -430,22 +352,7 @@ export type BlogMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type PublicationsPublicationsMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  authors?: InputMaybe<Scalars['String']['input']>;
-  year?: InputMaybe<Scalars['String']['input']>;
-  href?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type PublicationsMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  publications?: InputMaybe<Array<InputMaybe<PublicationsPublicationsMutation>>>;
-  moreHref?: InputMaybe<Scalars['String']['input']>;
-};
-
 export type BlogPartsFragment = { __typename: 'Blog', title: string, excerpt?: string | null, publishDate: string, isFeatured?: boolean | null, body?: any | null, featureImage?: { __typename: 'BlogFeatureImage', src: string, alt?: string | null } | null, seo?: { __typename: 'BlogSeo', image?: { __typename: 'BlogSeoImage', src: string } | null } | null };
-
-export type PublicationsPartsFragment = { __typename: 'Publications', title: string, moreHref?: string | null, publications?: Array<{ __typename: 'PublicationsPublications', title: string, authors?: string | null, year?: string | null, href?: string | null } | null> | null };
 
 export type BlogQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -465,25 +372,6 @@ export type BlogConnectionQueryVariables = Exact<{
 
 
 export type BlogConnectionQuery = { __typename?: 'Query', blogConnection: { __typename?: 'BlogConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'BlogConnectionEdges', cursor: string, node?: { __typename: 'Blog', id: string, title: string, excerpt?: string | null, publishDate: string, isFeatured?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, featureImage?: { __typename: 'BlogFeatureImage', src: string, alt?: string | null } | null, seo?: { __typename: 'BlogSeo', image?: { __typename: 'BlogSeoImage', src: string } | null } | null } | null } | null> | null } };
-
-export type PublicationsQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type PublicationsQuery = { __typename?: 'Query', publications: { __typename: 'Publications', id: string, title: string, moreHref?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, publications?: Array<{ __typename: 'PublicationsPublications', title: string, authors?: string | null, year?: string | null, href?: string | null } | null> | null } };
-
-export type PublicationsConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<PublicationsFilter>;
-}>;
-
-
-export type PublicationsConnectionQuery = { __typename?: 'Query', publicationsConnection: { __typename?: 'PublicationsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PublicationsConnectionEdges', cursor: string, node?: { __typename: 'Publications', id: string, title: string, moreHref?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, publications?: Array<{ __typename: 'PublicationsPublications', title: string, authors?: string | null, year?: string | null, href?: string | null } | null> | null } | null } | null> | null } };
 
 export const BlogPartsFragmentDoc = gql`
     fragment BlogParts on Blog {
@@ -505,20 +393,6 @@ export const BlogPartsFragmentDoc = gql`
     }
   }
   body
-}
-    `;
-export const PublicationsPartsFragmentDoc = gql`
-    fragment PublicationsParts on Publications {
-  __typename
-  title
-  publications {
-    __typename
-    title
-    authors
-    year
-    href
-  }
-  moreHref
 }
     `;
 export const BlogDocument = gql`
@@ -578,63 +452,6 @@ export const BlogConnectionDocument = gql`
   }
 }
     ${BlogPartsFragmentDoc}`;
-export const PublicationsDocument = gql`
-    query publications($relativePath: String!) {
-  publications(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...PublicationsParts
-  }
-}
-    ${PublicationsPartsFragmentDoc}`;
-export const PublicationsConnectionDocument = gql`
-    query publicationsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PublicationsFilter) {
-  publicationsConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...PublicationsParts
-      }
-    }
-  }
-}
-    ${PublicationsPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -643,12 +460,6 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     blogConnection(variables?: BlogConnectionQueryVariables, options?: C): Promise<{data: BlogConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BlogConnectionQueryVariables, query: string}> {
         return requester<{data: BlogConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BlogConnectionQueryVariables, query: string}, BlogConnectionQueryVariables>(BlogConnectionDocument, variables, options);
-      },
-    publications(variables: PublicationsQueryVariables, options?: C): Promise<{data: PublicationsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PublicationsQueryVariables, query: string}> {
-        return requester<{data: PublicationsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PublicationsQueryVariables, query: string}, PublicationsQueryVariables>(PublicationsDocument, variables, options);
-      },
-    publicationsConnection(variables?: PublicationsConnectionQueryVariables, options?: C): Promise<{data: PublicationsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PublicationsConnectionQueryVariables, query: string}> {
-        return requester<{data: PublicationsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PublicationsConnectionQueryVariables, query: string}, PublicationsConnectionQueryVariables>(PublicationsConnectionDocument, variables, options);
       }
     };
   }
@@ -697,7 +508,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "https://content.tinajs.io/1.6/content/2d1137a0-60c0-48b1-8255-6ce1571aba55/github/main",
+        url: "http://localhost:4001/graphql",
         queries,
       })
     )

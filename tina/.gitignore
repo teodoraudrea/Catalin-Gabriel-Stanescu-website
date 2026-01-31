@@ -1,1 +1,2 @@
-__generated__
+# Allow committing generated Tina artifacts (we want generated client/types to be in repo for Tina Cloud indexing)
+# __generated__

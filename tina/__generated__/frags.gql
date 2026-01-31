@@ -1,0 +1,20 @@
+fragment BlogParts on Blog {
+  __typename
+  title
+  excerpt
+  publishDate
+  featureImage {
+    __typename
+    src
+    alt
+  }
+  isFeatured
+  seo {
+    __typename
+    image {
+      __typename
+      src
+    }
+  }
+  body
+}
